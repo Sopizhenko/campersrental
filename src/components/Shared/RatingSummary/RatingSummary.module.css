@@ -1,0 +1,28 @@
+.ratingInfo {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ratingInfo_icon {
+    fill: var(--rating);
+}
+
+.noRating_icon {
+    fill: var(--badges);
+}
+
+.ratingInfo_text {
+    font-weight: 400;
+    line-height: 150%;
+    color: var(--main);
+}
+
+.ratingInfo_text::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 0.1em;
+    background-color: var(--main);
+    transition: width 0.3s;
+}
