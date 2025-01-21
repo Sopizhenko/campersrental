@@ -4,3 +4,45 @@
     gap: 12px;
     margin-top: 24px;
 }
+
+.filterButton {
+    margin-top: 40px;
+}
+
+.vehicleTypeFilter,
+.vehicleFeatureFilter {
+    margin-top: 32px;
+}
+
+.locationFilter {
+    position: relative;
+}
+
+.locationInput {
+    width: 100%;
+    padding: 18px 50px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--inputs);
+}
+
+.locationInput:focus {
+    outline: none;
+}
+
+.locationInput::placeholder {
+
+}
+
+.locationInputIcon {
+    fill: var(--gray);
+    position: absolute;
+    top: 56%;
+    left: 16px;
+}
+
+.locationInputIcon.active {
+    fill: var(--main);
+}
+

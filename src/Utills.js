@@ -7,6 +7,7 @@ export const getFilterParams = (filters, page) => {
     const queryParams = new URLSearchParams();
 
     queryParams.append("page", page);
+    queryParams.append("limit", page * 4);
 
     Object.entries(filters).forEach(([key, value]) => {
         if (value !== null && value !== '' && value !== false) queryParams.append(key, value);
@@ -29,6 +30,9 @@ export const featureMapping = {
     water: 'icon-water',
     petrol: 'icon-fuel-pump',
     automatic: 'icon-transmission',
+    panelTruck: 'icon-grid-1_2',
+    fullyIntegrated: 'icon-grid-2',
+    alcove: 'icon-grid-3'
 };
 
 export const defaultFilters = {
@@ -48,7 +52,7 @@ export const defaultFilters = {
 };
 
 export const vehicleTypesMapping = {
-    panelTruck: 'Panel Truck',
+    panelTruck: 'Van',
     fullyIntegrated: 'Fully Integrated',
     alcove: 'Alcove'
 };

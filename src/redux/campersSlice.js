@@ -28,6 +28,9 @@ const campersSlice = createSlice({
         clearSelectedCamper: (state) => {
             state.selectedCamper = null;
         },
+        setCurrentPage: (state, action) => {
+            state.currentPage = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -106,5 +109,5 @@ export const selectSelectedCamperVehicleDetails = createSelector(
     })
 );
 
-export const {setSelectedCamper, clearSelectedCamper} = campersSlice.actions;
+export const {setSelectedCamper, clearSelectedCamper, setCurrentPage} = campersSlice.actions;
 export default campersSlice.reducer;

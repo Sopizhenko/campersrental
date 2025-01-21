@@ -6,8 +6,10 @@ import {fetchCampers} from "../../redux/campersOps.js";
 import LocationFilter from "./LocationFilter.jsx";
 import VehicleFeaturesFilter from "./VehicleFeaturesFilter.jsx";
 import VehicleTypeFilter from "./VehicleTypeFilter.jsx";
-import {selectCurrentPage} from "../../redux/campersSlice.js";
+import {selectCurrentPage, setCurrentPage} from "../../redux/campersSlice.js";
 import {useNavigate} from "react-router-dom";
+import Button from "../Shared/Button/Button.jsx";
+import Text from "../Shared/Text/Text.jsx";
 
 const CampersFilters = () => {
     const dispatch = useDispatch();
@@ -20,6 +22,7 @@ const CampersFilters = () => {
     }
 
     const handleSearch = () => {
+        dispatch(setCurrentPage(1));
         const queryParams = getFilterParams(filters, currentPage)
         navigate(`?${queryParams}`);
         dispatch(fetchCampers(queryParams));
@@ -27,10 +30,11 @@ const CampersFilters = () => {
 
     return (
         <div className="filter-sidebar">
-            {/*<LocationFilter value={filters.location} onChange={handleFilterChange}/>*/}
+            <LocationFilter value={filters.location} onChange={handleFilterChange}/>
+            <Text>Filters</Text>
             <VehicleFeaturesFilter filters={filters} onChange={handleFilterChange}/>
-            {/*<VehicleTypeFilter filters={filters} onChange={handleFilterChange} vehicleTypes={['panelTruck', 'fullyIntegrated']}/>*/}
-            <button onClick={handleSearch}>Search</button>
+            <VehicleTypeFilter filters={filters} onChange={handleFilterChange}/>
+            <Button onClick={handleSearch} text='Search' className={css.filterButton}/>
         </div>
     );
 }
