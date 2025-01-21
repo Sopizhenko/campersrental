@@ -1,17 +1,15 @@
 import { NavLink } from "react-router-dom";
-import css from "./Menu.module.css";
-import Logo from "./Logo";
+import css from "./Menu.module.css"
 
 const Menu = () => {
   return (
     <nav className={css.menu}>
       <ul className={css.menuList}>
-        <Logo />
         <li className={css.menuItem}>
-          <NavLink to="/" exact>Home</NavLink>
+            <NavLink className={css.menuLink} to="/">Home</NavLink>
         </li>
         <li className={css.menuItem}>
-          <NavLink to="/catalog">Catalog</NavLink>
+            <NavLink className={css.menuLink} to="/catalog">Catalog</NavLink>
         </li>
       </ul>
     </nav>

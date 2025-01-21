@@ -1,4 +1,3 @@
-import {selectFilters} from "./filtersSlice.js";
 import {fetchCamper, fetchCampers} from "./campersOps.js";
 import {createSelector, createSlice} from "@reduxjs/toolkit";
 
@@ -17,6 +16,8 @@ const campersSlice = createSlice({
     initialState: {
         campers: [],
         selectedCamper: null,
+        currentPage: 1,
+        totalCampers: 0,
         loading: false,
         error: null,
     },
@@ -33,7 +34,8 @@ const campersSlice = createSlice({
             .addCase(fetchCampers.pending, handlePending)
             .addCase(fetchCampers.rejected, handleRejected)
             .addCase(fetchCampers.fulfilled, (state, action) => {
-                state.campers = action.payload;
+                state.totalCampers = action.payload.total;
+                state.campers = action.payload.items;
                 state.loading = false;
             })
             .addCase(fetchCamper.pending, handlePending)
@@ -50,29 +52,21 @@ export const selectCampers = (state) => state.campers.campers;
 export const selectLoadingCampers = (state) => state.campers.loading;
 export const selectErrorCampers = (state) => state.campers.error;
 export const selectSelectedCamper = (state) => state.campers.selectedCamper;
-
-export const selectFilteredCampers = createSelector(
-    [selectCampers, selectFilters],
-    (campers, filters) => {
-        const {data = []} = campers; // Fallback to an empty array if data is undefined
-        const {location, vehicleType} = filters;
-
-        return data.items.filter((camper) => {
-            if (location && camper.location !== location) {
-                return false;
-            }
-            if (vehicleType && camper.vehicleType !== vehicleType) {
-                return false;
-            }
-            return true;
-        });
-    }
-);
+export const selectTotalCampers = (state) => state.campers.totalCampers;
+export const selectCurrentPage = (state) => state.campers.currentPage;
+export const selectHasCampers = (state) => state.campers.campers.length > 0;
 
 export const selectSelectedCamperReviews = createSelector(
     selectSelectedCamper,
     (selectedCamper) => {
         return selectedCamper?.reviews || [];
+    }
+);
+
+export const selectSelectedCamperPrice = createSelector(
+    selectSelectedCamper,
+    (selectedCamper) => {
+        return selectedCamper?.price || 0;
     }
 );
 
@@ -83,13 +77,6 @@ export const selectSelectedCamperStats = createSelector(
         totalReviews: selectedCamper?.reviews.length || 0,
         hasReviews: selectedCamper?.reviews.length > 0,
     })
-);
-
-export const selectSelectedCamperRating = createSelector(
-    selectSelectedCamper,
-    (selectedCamper) => {
-        return selectedCamper?.rating || 0;
-    }
 );
 
 export const selectSelectedCamperLocation = createSelector(
@@ -104,6 +91,18 @@ export const selectSelectedCamperImages = createSelector(
     (selectedCamper) => ({
         images: selectedCamper?.gallery || [],
         alt: selectedCamper?.name || "",
+    })
+);
+
+export const selectSelectedCamperVehicleDetails = createSelector(
+    selectSelectedCamper,
+    (selectedCamper) => ({
+        Form: selectedCamper?.form || "-",
+        Length: selectedCamper?.length || "-",
+        Width: selectedCamper?.width || "-",
+        Height: selectedCamper?.height || "-",
+        Tank: selectedCamper?.tank || "-",
+        Consumption: selectedCamper?.consumption || "-",
     })
 );
 

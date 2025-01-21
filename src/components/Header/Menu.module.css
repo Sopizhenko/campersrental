@@ -1,6 +1,15 @@
 .menuList {
-    margin: 0;
+    margin: 0 auto;
     list-style: none;
     display: flex;
+    align-items: center;
     gap: 1em;
+}
+
+.menuLink {
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    padding: 24px 0;
+    display: block;
 }

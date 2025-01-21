@@ -22,7 +22,7 @@
     content: "";
     display: block;
     width: 100%;
-    height: 0.1em;
+    height: 1px;
     background-color: var(--main);
     transition: width 0.3s;
 }

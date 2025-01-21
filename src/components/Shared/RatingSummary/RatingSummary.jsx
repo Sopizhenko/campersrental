@@ -1,12 +1,7 @@
-import React from 'react';
-import {useSelector} from "react-redux";
 import css from "./RatingSummary.module.css"
-import {selectSelectedCamperStats} from "../../../redux/campersSlice.js";
 import Icon from "../Icon/Icon"
 
-const RatingSummary = () => {
-    const {rating, totalReviews, hasReviews} = useSelector(selectSelectedCamperStats);
-
+const RatingSummary = ({rating, totalReviews, hasReviews}) => {
     return (
         <div className={css.ratingInfo}>
             <Icon className={(rating > 0 ? css.ratingInfo_icon : css.noRating_icon)} id={'icon-rating'} size={16}/>

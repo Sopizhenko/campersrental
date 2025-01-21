@@ -1,0 +1,61 @@
+.campersList {
+    display: flex;
+    gap: 32px;
+    flex-direction: column;
+}
+
+.camperListItem {
+    display: flex;
+    width: 100%;
+}
+
+/*Card*/
+.camperCard {
+    width: 100%;
+    display: flex;
+    gap: 24px;
+    border: 1px solid var(--gray-light);
+    border-radius: 20px;
+    padding: 24px;
+}
+
+.camperImage {
+    flex: 0 0 292px;
+    height: 320px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.camperImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.camperInfo {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.headline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.ratingLine {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.description,
+.features,
+.showMore {
+    margin-top: 24px;
+    align-self: flex-start;
+}
+

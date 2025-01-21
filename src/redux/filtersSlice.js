@@ -1,27 +1,14 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {defaultFilters} from "../Utills";
 
 const filtersSlice = createSlice({
     name: "filters",
     initialState: {
-        location: "",
-        vehicleType: "",
-        hasAutoTransmission: null,
-        hasAC: null,
-        hasKitchen: null,
-        hasBathroom: null,
-        hasTV: null,
-        hasRadio: null,
-        hasRefrigerator: null,
-        hasMicrowave: null,
-        hasGas: null,
-        hasWater: null,
+        ...defaultFilters,
     },
     reducers: {
         setFilter: (state, action) => {
-            const {key, value} = action.payload;
-            if (key in state) {
-                state[key] = value; // Update the specific filter dynamically
-            }
+            Object.assign(state, action.payload);
         },
     },
 });

@@ -1,0 +1,12 @@
+.campersCatalog {
+    display: grid;
+    grid-template-columns: 360px 1fr; /* Left column fixed at 360px, right column takes remaining space */
+    gap: 64px; /* Gap between the columns */
+    width: 100%;
+}
+
+.sidebar {
+}
+
+.content {
+}
