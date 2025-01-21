@@ -1,3 +1,8 @@
 .header {
     background: #F2F4F7;
 }
+
+.headerTop {
+    display: flex;
+    align-items: center;
+}

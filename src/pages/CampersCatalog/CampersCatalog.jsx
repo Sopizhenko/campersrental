@@ -55,17 +55,21 @@ const CampersCatalog = () => {
 
     return (
         <Container>
-            <div className={css.campersCatalog}>
-                <div className={css.sidebar}>
-                    <CampersFilters/>
+            {isLoading && <h1>Loading...</h1>}
+            {isError && <h1>An error occurred while fetching the campers.</h1>}
+            <main>
+                <div className={css.campersCatalog}>
+                    <div className={css.sidebar}>
+                        <CampersFilters/>
+                    </div>
+                    <div className={css.content}>
+                        <CampersList/>
+                        {hasMore && (
+                            <Button onClick={handleLoadMore} text={'Load more'} className={css.loadMoreButton}/>
+                        )}
+                    </div>
                 </div>
-                <div className={css.content}>
-                    <CampersList/>
-                    {hasMore && (
-                        <Button onClick={handleLoadMore} text={'Load more'} className={css.loadMoreButton}/>
-                    )}
-                </div>
-            </div>
+            </main>
         </Container>
     );
 }

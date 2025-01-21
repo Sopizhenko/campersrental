@@ -48,52 +48,54 @@ const CamperDetails = () => {
 
     return (
         <Container>
-            <Heading>{camper.name}</Heading>
+            <main>
+                <Heading>{camper.name}</Heading>
 
-            <div className={css.ratingLine}>
-                <RatingSummary rating={camper.rating} hasReviews={hasReviews} totalReviews={totalReviews}/>
-                <Location camperLocation={camper.location}/>
-            </div>
-
-            <div className={css.priceLine}>
-                <Price price={camper.price}/>
-            </div>
-
-            <CamperGallery/>
-
-            <div className={css.camperDescription}>
-                <Text>{camper.description}</Text>
-            </div>
-
-            <ul className={css.camperDetailsTabs}>
-                <li className={css.tab}>
-                    <NavLink
-                        to="features"
-                        state={camper.id}
-                        className={({isActive}) => (isActive ? css.activeTab : "")}
-                    >
-                        Features
-                    </NavLink>
-                </li>
-                <li className={css.tab}>
-                    <NavLink
-                        to="reviews"
-                        state={camper.id}
-                        className={({isActive}) => (isActive ? css.activeTab : "")}
-                    >
-                        Reviews
-                    </NavLink>
-                </li>
-            </ul>
-
-            <div className={css.tabContent}>
-                <div className={css.tabContent_left}>
-                    <Outlet/>
+                <div className={css.ratingLine}>
+                    <RatingSummary rating={camper.rating} hasReviews={hasReviews} totalReviews={totalReviews}/>
+                    <Location camperLocation={camper.location}/>
                 </div>
-                <div className={css.tabContent_right}>
-                    <BookingForm/>
+
+                <div className={css.priceLine}>
+                    <Price price={camper.price}/>
                 </div>
-            </div>
+
+                <CamperGallery/>
+
+                <div className={css.camperDescription}>
+                    <Text>{camper.description}</Text>
+                </div>
+
+                <ul className={css.camperDetailsTabs}>
+                    <li className={css.tab}>
+                        <NavLink
+                            to="features"
+                            state={camper.id}
+                            className={({isActive}) => (isActive ? css.activeTab : "")}
+                        >
+                            Features
+                        </NavLink>
+                    </li>
+                    <li className={css.tab}>
+                        <NavLink
+                            to="reviews"
+                            state={camper.id}
+                            className={({isActive}) => (isActive ? css.activeTab : "")}
+                        >
+                            Reviews
+                        </NavLink>
+                    </li>
+                </ul>
+
+                <div className={css.tabContent}>
+                    <div className={css.tabContent_left}>
+                        <Outlet/>
+                    </div>
+                    <div className={css.tabContent_right}>
+                        <BookingForm/>
+                    </div>
+                </div>
+            </main>
         </Container>
     );
 };

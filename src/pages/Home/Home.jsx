@@ -1,10 +1,10 @@
-import React from 'react';
-import Styles from "./Home.module.css"
+import css from "./Home.module.css"
+import Hero from "../../components/Hero/Hero";
 
 const Home = () => {
     return (
       <div>
-          Home
+          <Hero/>
       </div>
     );
 }

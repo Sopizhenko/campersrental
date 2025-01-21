@@ -1,3 +1,7 @@
+.menu {
+    margin: 0 auto;
+}
+
 .menuList {
     margin: 0 auto;
     list-style: none;
@@ -12,4 +16,8 @@
     font-weight: 600;
     padding: 24px 0;
     display: block;
+}
+
+.menuLink.active {
+    color: var(--button-hover);
 }

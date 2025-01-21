@@ -29,13 +29,13 @@ const CampersFilters = () => {
     };
 
     return (
-        <div className="filter-sidebar">
+        <>
             <LocationFilter value={filters.location} onChange={handleFilterChange}/>
-            <Text>Filters</Text>
+            <Text className={css.filtersHeader}>Filters</Text>
             <VehicleFeaturesFilter filters={filters} onChange={handleFilterChange}/>
             <VehicleTypeFilter filters={filters} onChange={handleFilterChange}/>
             <Button onClick={handleSearch} text='Search' className={css.filterButton}/>
-        </div>
+        </>
     );
 }
 

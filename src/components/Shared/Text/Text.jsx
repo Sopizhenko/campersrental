@@ -1,6 +1,6 @@
 import css from "./Text.module.css"
 
-const Text = ({children, maxLength}) => {
+const Text = ({children, maxLength, className = ""}) => {
     const getTruncatedText = () => {
         if (maxLength && children.length > maxLength) {
             return children.slice(0, maxLength) + "...";
@@ -9,7 +9,7 @@ const Text = ({children, maxLength}) => {
     };
 
     return (
-        <p className={css.text}>
+        <p className={`${css.text} ${className}`}>
             {getTruncatedText()}
         </p>
     );
