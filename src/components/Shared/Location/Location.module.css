@@ -1,9 +1,9 @@
 .location {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .location_icon {
-    fill: var(--main);
+  fill: var(--main);
 }

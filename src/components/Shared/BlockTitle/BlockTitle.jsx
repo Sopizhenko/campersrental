@@ -1,11 +1,11 @@
-import css from "./BlockTitle.module.css"
+import css from "./BlockTitle.module.css";
 
-const BlockTitle = ({children, underlined = false}) => {
-    return (
-        <h3 className={`${css.blockTitle} ${underlined ? css.underlined : ''}`}>
-            {children}
-        </h3>
-    );
-}
+const BlockTitle = ({ children, underlined = false }) => {
+  return (
+    <h3 className={`${css.blockTitle} ${underlined ? css.underlined : ""}`}>
+      {children}
+    </h3>
+  );
+};
 
-export default BlockTitle
+export default BlockTitle;

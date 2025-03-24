@@ -1,57 +1,57 @@
-import {fetchCamper, fetchCampers} from "./campersOps.js";
-import {createSelector, createSlice} from "@reduxjs/toolkit";
+import { fetchCamper, fetchCampers } from "./campersOps.js";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 const handlePending = (state) => {
-    state.loading = true;
-    state.error = null;
-}
+  state.loading = true;
+  state.error = null;
+};
 
 const handleRejected = (state, action) => {
-    state.loading = false;
-    state.error = action.payload;
-}
+  state.loading = false;
+  state.error = action.payload;
+};
 
 const campersSlice = createSlice({
-    name: "campers",
-    initialState: {
-        campers: [],
-        selectedCamper: null,
-        currentPage: 1,
-        totalCampers: 0,
-        loading: false,
-        error: null,
+  name: "campers",
+  initialState: {
+    campers: [],
+    selectedCamper: null,
+    currentPage: 1,
+    totalCampers: 0,
+    loading: false,
+    error: null,
+  },
+  reducers: {
+    setSelectedCamper: (state, action) => {
+      state.selectedCamper = action.payload;
     },
-    reducers: {
-        setSelectedCamper: (state, action) => {
-            state.selectedCamper = action.payload;
-        },
-        clearSelectedCamper: (state) => {
-            state.selectedCamper = null;
-        },
-        setCurrentPage: (state, action) => {
-            state.currentPage = action.payload;
-        },
+    clearSelectedCamper: (state) => {
+      state.selectedCamper = null;
     },
-    extraReducers: (builder) => {
-        builder
-            .addCase(fetchCampers.pending, handlePending)
-            .addCase(fetchCampers.rejected, handleRejected)
-            .addCase(fetchCampers.fulfilled, (state, action) => {
-                if (state.currentPage === 1) {
-                    state.campers = action.payload.items;
-                    state.totalCampers = action.payload.total;
-                } else {
-                    state.campers = [...state.campers, ...action.payload.items];
-                }
-                state.loading = false;
-            })
-            .addCase(fetchCamper.pending, handlePending)
-            .addCase(fetchCamper.rejected, handleRejected)
-            .addCase(fetchCamper.fulfilled, (state, action) => {
-                state.selectedCamper = action.payload;
-                state.loading = false;
-            });
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchCampers.pending, handlePending)
+      .addCase(fetchCampers.rejected, handleRejected)
+      .addCase(fetchCampers.fulfilled, (state, action) => {
+        if (state.currentPage === 1) {
+          state.campers = action.payload.items;
+          state.totalCampers = action.payload.total;
+        } else {
+          state.campers = [...state.campers, ...action.payload.items];
+        }
+        state.loading = false;
+      })
+      .addCase(fetchCamper.pending, handlePending)
+      .addCase(fetchCamper.rejected, handleRejected)
+      .addCase(fetchCamper.fulfilled, (state, action) => {
+        state.selectedCamper = action.payload;
+        state.loading = false;
+      });
+  },
 });
 
 // Selectors
@@ -64,54 +64,55 @@ export const selectCurrentPage = (state) => state.campers.currentPage;
 export const selectHasCampers = (state) => state.campers.campers.length > 0;
 
 export const selectSelectedCamperReviews = createSelector(
-    selectSelectedCamper,
-    (selectedCamper) => {
-        return selectedCamper?.reviews || [];
-    }
+  selectSelectedCamper,
+  (selectedCamper) => {
+    return selectedCamper?.reviews || [];
+  },
 );
 
 export const selectSelectedCamperPrice = createSelector(
-    selectSelectedCamper,
-    (selectedCamper) => {
-        return selectedCamper?.price || 0;
-    }
+  selectSelectedCamper,
+  (selectedCamper) => {
+    return selectedCamper?.price || 0;
+  },
 );
 
 export const selectSelectedCamperStats = createSelector(
-    selectSelectedCamper,
-    (selectedCamper) => ({
-        rating: selectedCamper?.rating || 0,
-        totalReviews: selectedCamper?.reviews.length || 0,
-        hasReviews: selectedCamper?.reviews.length > 0,
-    })
+  selectSelectedCamper,
+  (selectedCamper) => ({
+    rating: selectedCamper?.rating || 0,
+    totalReviews: selectedCamper?.reviews.length || 0,
+    hasReviews: selectedCamper?.reviews.length > 0,
+  }),
 );
 
 export const selectSelectedCamperLocation = createSelector(
-    selectSelectedCamper,
-    (selectedCamper) => {
-        return selectedCamper?.location || "";
-    }
+  selectSelectedCamper,
+  (selectedCamper) => {
+    return selectedCamper?.location || "";
+  },
 );
 
 export const selectSelectedCamperImages = createSelector(
-    selectSelectedCamper,
-    (selectedCamper) => ({
-        images: selectedCamper?.gallery || [],
-        alt: selectedCamper?.name || "",
-    })
+  selectSelectedCamper,
+  (selectedCamper) => ({
+    images: selectedCamper?.gallery || [],
+    alt: selectedCamper?.name || "",
+  }),
 );
 
 export const selectSelectedCamperVehicleDetails = createSelector(
-    selectSelectedCamper,
-    (selectedCamper) => ({
-        Form: selectedCamper?.form || "-",
-        Length: selectedCamper?.length || "-",
-        Width: selectedCamper?.width || "-",
-        Height: selectedCamper?.height || "-",
-        Tank: selectedCamper?.tank || "-",
-        Consumption: selectedCamper?.consumption || "-",
-    })
+  selectSelectedCamper,
+  (selectedCamper) => ({
+    Form: selectedCamper?.form || "-",
+    Length: selectedCamper?.length || "-",
+    Width: selectedCamper?.width || "-",
+    Height: selectedCamper?.height || "-",
+    Tank: selectedCamper?.tank || "-",
+    Consumption: selectedCamper?.consumption || "-",
+  }),
 );
 
-export const {setSelectedCamper, clearSelectedCamper, setCurrentPage} = campersSlice.actions;
+export const { setSelectedCamper, clearSelectedCamper, setCurrentPage } =
+  campersSlice.actions;
 export default campersSlice.reducer;

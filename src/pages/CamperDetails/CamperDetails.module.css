@@ -1,61 +1,61 @@
 .ratingLine {
-    display: flex;
-    gap: 16px;
-    margin-top: 8px;
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
 }
 
 .priceLine {
-    margin-top: 16px;
+  margin-top: 16px;
 }
 
 .camperDescription {
-    margin-top: 28px;
+  margin-top: 28px;
 }
 
 .camperDetailsTabs {
-    margin-top: 62px;
-    display: flex;
-    gap: 40px;
-    padding-bottom: 24px;
-    border-bottom: 2px solid var(--gray-light);
+  margin-top: 62px;
+  display: flex;
+  gap: 40px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--gray-light);
 }
 
 .tab a {
-    position: relative;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 1.2;
-    color: var(--main);
-    padding-bottom: 29px;
+  position: relative;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--main);
+  padding-bottom: 29px;
 }
 
 .activeTab::after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    content: '';
-    width: 100%;
-    height: 5px;
-    background-color: var(--button);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 5px;
+  background-color: var(--button);
 }
 
 .tabContent {
-    margin-top: 42px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    align-items: stretch;
-    gap: 40px;
+  margin-top: 42px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  align-items: stretch;
+  gap: 40px;
 }
 
 .tabContent_left {
-    display: flex;
+  display: flex;
 }
 
 .tabContent_right {
-    display: flex;
-    flex-direction: column;
-    row-gap: 100px;
-    padding: 44px 57px;
-    border-radius: 10px;
-    border: 1px solid var(--gray-light);
+  display: flex;
+  flex-direction: column;
+  row-gap: 100px;
+  padding: 44px 57px;
+  border-radius: 10px;
+  border: 1px solid var(--gray-light);
 }

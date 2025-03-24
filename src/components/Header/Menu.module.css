@@ -1,23 +1,23 @@
 .menu {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .menuList {
-    margin: 0 auto;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 1em;
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1em;
 }
 
 .menuLink {
-    text-decoration: none;
-    color: #000;
-    font-weight: 600;
-    padding: 24px 0;
-    display: block;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  padding: 24px 0;
+  display: block;
 }
 
 .menuLink.active {
-    color: var(--button-hover);
+  color: var(--button-hover);
 }
