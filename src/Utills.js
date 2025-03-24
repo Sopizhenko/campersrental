@@ -7,7 +7,7 @@ export const getFilterParams = (filters, page) => {
     const queryParams = new URLSearchParams();
 
     queryParams.append("page", page);
-    queryParams.append("limit", page * 4);
+    queryParams.append("limit", 4);
 
     Object.entries(filters).forEach(([key, value]) => {
         if (value !== null && value !== '' && value !== false) queryParams.append(key, value);
@@ -19,7 +19,7 @@ export const getFilterParams = (filters, page) => {
 export const featureMapping = {
     engine: 'icon-fuel-pump',
     transmission: 'icon-transmission',
-    AC: 'icon-fridge',
+    AC: 'icon-wind',
     bathroom: 'icon-shower',
     kitchen: 'icon-cup-hot',
     TV: 'icon-tv',

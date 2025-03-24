@@ -16,6 +16,7 @@ import {
 } from "../../redux/campersSlice.js";
 import Text from "../../components/Shared/Text/Text.jsx";
 import BookingForm from "../../components/BookingForm/BookingForm.jsx";
+import Loader from "../../components/Loader/Loader.jsx";
 
 const CamperDetails = () => {
     const navigate = useNavigate();
@@ -40,7 +41,7 @@ const CamperDetails = () => {
         }
     }, [navigate, camperId]);
 
-    if (isLoading) return <h1>Loading...</h1>;
+    if (isLoading) return <Loader/>;
 
     if (isError) return <h1>An error occurred while fetching the camper details.</h1>;
 

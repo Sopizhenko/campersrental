@@ -37,8 +37,12 @@ const campersSlice = createSlice({
             .addCase(fetchCampers.pending, handlePending)
             .addCase(fetchCampers.rejected, handleRejected)
             .addCase(fetchCampers.fulfilled, (state, action) => {
-                state.totalCampers = action.payload.total;
-                state.campers = action.payload.items;
+                if (state.currentPage === 1) {
+                    state.campers = action.payload.items;
+                    state.totalCampers = action.payload.total;
+                } else {
+                    state.campers = [...state.campers, ...action.payload.items];
+                }
                 state.loading = false;
             })
             .addCase(fetchCamper.pending, handlePending)

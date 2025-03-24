@@ -10,11 +10,16 @@ const filtersSlice = createSlice({
         setFilter: (state, action) => {
             Object.assign(state, action.payload);
         },
+        resetFilters: (state) => {
+            Object.keys(state).forEach((key) => {
+                state[key] = defaultFilters[key];
+            }
+        )}
     },
 });
 
 // Selectors
 export const selectFilters = (state) => state.filters;
 
-export const {setFilter} = filtersSlice.actions;
+export const {setFilter, resetFilters} = filtersSlice.actions;
 export default filtersSlice.reducer;
